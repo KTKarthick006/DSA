@@ -25,6 +25,8 @@ int main ()
     current ->data = 30 ;
     current ->link = nullptr;
     head->link->link = current;
+    free(head);
+    free(current);
 
     
     return 0 ;
