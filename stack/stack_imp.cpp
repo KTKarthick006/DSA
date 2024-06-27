@@ -1,3 +1,4 @@
+//Array implementation using class 
 # include <iostream>
 using namespace std ;
 
@@ -6,6 +7,7 @@ using namespace std ;
 class stack 
 {
         int top = -1 ;
+        int size = 0 ;
     public:
         int item[max];
         void push (int x);
@@ -13,6 +15,7 @@ class stack
         void peek ();
         int is_empty();
         int is_full();
+        void print_stack();
 };
 
 void stack :: push (int x)
@@ -24,6 +27,7 @@ void stack :: push (int x)
     else
     {
         item[++top]=x;
+        size ++ ;
         cout<<"Item "<< x <<" pushed"<<endl ;
     }
 }
@@ -37,6 +41,7 @@ void stack :: pop ()
     else
     {
         int x = item[top--];
+        size -- ;
         cout<<"Item "<< x <<" popped"<<endl;
     }
 }
@@ -72,6 +77,20 @@ int stack :: is_full()
     return 0 ;
 }
 
+void stack :: print_stack ()
+{
+    if(size == 0)
+    {
+        cout<<"Stack empty "<<endl;
+        return ;
+    }
+    for (int i = 0; i < size ; i++)
+    {
+        cout<<item[i]<<endl;
+    }
+    
+}
+
 int main ()
 {
     int ch , x ;
@@ -84,7 +103,8 @@ int main ()
         cout<<"3-peek"<<endl;
         cout<<"4-is empty"<<endl;
         cout<<"5-is full"<<endl;
-        cout<<"6-Exit"<<endl;
+        cout<<"6-Print stack "<<endl;
+        cout<<"7-Exit"<<endl;
 
         cout<<"Enter your choice : ";
         cin>>ch;
@@ -126,12 +146,15 @@ int main ()
             }
             break;
         case 6:
+            st.print_stack();
+            break;
+        case 7:
             cout<<"Exit"<<endl;  
             break;
         default:
             cout<<"Enter a valid choice"<<endl;
             break;
         }
-    } while (ch!=6);
+    } while (ch!=7);
     
 }
