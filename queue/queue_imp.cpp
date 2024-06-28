@@ -1,7 +1,7 @@
 # include <iostream>
 using namespace std ;
 
-# define max  5
+#define max 5
 
 class queue 
 {
@@ -13,7 +13,7 @@ class queue
         int is_full () ;
         void peek () ;
         void enqueue (int x ) ;
-        //void dequeue () ; 
+        void dequeue () ; 
         void print_queue();
     queue ()
     {
@@ -79,6 +79,25 @@ void queue :: enqueue (int x )
     items[++rear] = x;
 }
 
+void queue :: dequeue ()
+{
+    if (is_empty())
+    {
+        cout<<"The queue is empty"<<endl;
+        return ;
+    }
+    if (front>=rear)
+    {
+        int x = items[front];
+        front = -1 ;
+        rear = -1 ;
+        cout<<"Element "<<x<<" dequeued"<<endl;
+        return ;
+    }
+
+    int x = items[front++];
+    cout<<"Element "<<x<<" dequeued"<<endl;
+}
 int main ()
 {
     class queue q ;
@@ -138,7 +157,7 @@ int main ()
             q.enqueue(x);
             break;
         case 6:
-            //q.dequeue();
+            q.dequeue();
             break;
         case 7:
             cout<<"Exit"<<endl;  
